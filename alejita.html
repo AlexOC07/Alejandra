@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👑 Feliz Cumpleaños</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="icon" href="ale.jpg" type="image/png">
+</head>
+<body>
+    <!-- 🎈 Fondo de linternas flotantes -->
+    <div id="linternas-container"></div>
+    <!-- 🎶 Música de fondo -->
+    <!-- Botón 1: Canción principal -->
+<button class="boton-musica" onclick="reproducirCancion('musica1')">🎵 Canción 1</button>
+<audio id="musica1" loop>
+    <source src="musicas.mp3/musica.mp3" type="audio/mpeg">
+</audio>
+<!-- Botón 2: Canción alternativa -->
+<button class="boton-musica" onclick="reproducirCancion('musica2')">🎶 Canción 2</button>
+<audio id="musica2" loop>
+    <source src="musicas.mp3/rapunzel.mp3" type="audio/mpeg">
+</audio>
+    <header>
+    <h1>👑 Feliz Cumpleaños, Princesa ALEJANDRA IXAMAR TOCOCARI CABRERA</h1>
+    <p>La más brillante, valiente y hermosa de nuestro reino</p>
+    </header>
+    <section class="bienvenida">
+    <h2>🌟 Hoy celebramos tu día mágico</h2>
+    <p>Querida Alejandra, eres la luz de nuestra torre encantada. ¡Feliz cumpleaños!</p>
+    </section>
+    <section class="galeria">
+    <h2>📸 Momentos reales de nuestra princesa</h2>
+    <div class="imagenes">
+        <img src="ale.jpg" alt="Princesa feliz">
+        <img src="aleeeee.jpg" alt="La mejor alumna">
+        <img src="aleja.jpg" alt="Sonrisa encantadora">
+    </div>
+    </section>
+    <section class="regalo">
+    <h2>🎁 ¡Una pequeña sorpresa de parte de ALEX!</h2>
+    <button onclick="mostrarRegalo()">Haz clic para abrir el regalo</button>
+    <p id="regalo" style="display:none;">¡Quisas no te conosca de toda la vida al igual que tus padres y tus hermanas pero aun eso quiero decirte 
+        que para este dia tan especial que es tu cumpleaños te deseo muchos exitos para que sigas siendo la niña inteligente, 
+        amigable, alegre y que seas la mas hermosa mucho mas que tus hermanas 😉😉 Nunca te des porvencida tienes a tus padres que te
+        estan apoyando nunca les falles demuestra con tus estudios saliendo adelante demostrando que puedes conseguir todo lo que te propones
+        y una ves que consigas todo eso veras que tus padres seran los mas orgullosos 😊 FELIZ CUMPLEAÑOS ALEJANDRA QUE LA PASES MARAVILLOSO 
+        EN ESTE DIA Y NO OLVIDES QUE AUN ESTAS EMPEZANDO Y TIENES MUCHAS COSAS POR VIVIR TIENES QUE SEGUIR ADELANTE 🎉🎊🎉
+        Posdata: No pude regalarte algo fisico disulpa pero este es un pequeño detalle que te pude dar espero te guste 😉😊🎉🎈🎉! 💖✨</p>
+    </section>
+    <section class="mensaje">
+    <h2>💌 Un mensaje de parte de tu hermana DAYNNET</h2>
+    <p>Querida hermanita, cada día contigo es un cuento maravilloso. Gracias por ser tan especial. ¡Te quiero muchísimo! 💖</p>
+    </section>
+    <footer>
+    <p>Con amor, Alex, ojo tu hermana se colo jejeje bromita, pero espero te guste cuando aprenda un poco mas te lo cambiare o si gustas 
+        aumentar con confianza me lo dices lo haremos a lo que mas te guste esta es tu propia pagina web si te molestan les dices por
+        lo menos yo tengo mi propia pagina web 😝 y ustedes que tienen nacos 😝 🌸</p>
+    </footer>
+    <!-- 🎈 Script de linternas -->
+    <script>
+    const contenedor = document.getElementById("linternas-container");
+    function crearLinterna() {
+        const linterna = document.createElement("img");
+        linterna.src = "linterna.png"; // Asegúrate de tener esta imagen
+        linterna.classList.add("linterna");
+        linterna.style.left = Math.random() * 100 + "vw";
+        linterna.style.animationDuration = (8 + Math.random() * 4) + "s";
+        contenedor.appendChild(linterna);
+        setTimeout(() => {
+        linterna.remove();
+        }, 12000);
+    }
+    setInterval(crearLinterna, 800);
+    function mostrarRegalo() {
+        document.getElementById("regalo").style.display = "block";
+    }
+    function reproducirCancion(id) {
+  // Pausar todas las canciones
+    document.querySelectorAll("audio").forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+    });
+  // Reproducir la seleccionada
+    const cancion = document.getElementById(id);
+    cancion.play();
+}
+    </script>
+</body>
+</html>

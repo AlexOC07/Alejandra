@@ -1,0 +1,155 @@
+/* ✨ Fondo de partículas */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+/* Estilo general */
+body {
+  margin: 0;
+  font-family: 'Segoe Script', cursive;
+  background: url('castillo.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #6a1b9a;
+  text-align: center;
+}
+header {
+  background: #ba68c8cc;
+  color: white;
+  padding: 30px;
+  border-bottom: 5px solid #ab47bc;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+header h1 {
+  font-size: 2.5em;
+  margin: 0;
+}
+.bienvenida, .galeria, .mensaje, .regalo {
+  padding: 30px 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.galeria .imagenes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+}
+.galeria img {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  border: 3px solid #ce93d8;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+button {
+  background-color: #f06292;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+button:hover {
+  transform: scale(1.05);
+  background-color: #ec407a;
+}
+footer {
+  background: #f8bbd0cc;
+  padding: 15px;
+  font-style: italic;
+  border-top: 3px solid #f48fb1;
+}
+.boton-musica {
+  background: linear-gradient(45deg, #f8bbd0, #ce93d8);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1.1em;
+  font-family: 'Segoe Script', cursive;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(186, 104, 200, 0.6);
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+.boton-musica:hover {
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #e1bee7, #f48fb1);
+  box-shadow: 0 6px 16px rgba(186, 104, 200, 0.8);
+}
+@keyframes resplandor {
+  0% {
+    box-shadow: 0 0 10px #f8bbd0;
+  }
+  100% {
+    box-shadow: 0 0 20px #ba68c8;
+  }
+}
+.boton-musica {
+  animation: resplandor 2s infinite alternate;
+}
+/* 🎈 Fondo de linternas flotantes */
+#linternas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+.linterna {
+  position: absolute;
+  width: 40px;
+  opacity: 0.8;
+  animation: flotar 10s linear infinite;
+}
+@keyframes flotar {
+  0% {
+    transform: translateY(100vh) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.2);
+    opacity: 0;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8em;
+  }
+  .galeria .imagenes {
+    flex-direction: column;
+    align-items: center;
+  }
+  .boton-musica,
+  button {
+    width: 90%;
+    font-size: 1em;
+    padding: 12px;
+  }
+  .mensaje p,
+  .bienvenida p {
+    font-size: 1em;
+  }
+}
