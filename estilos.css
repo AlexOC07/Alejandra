@@ -153,3 +153,58 @@ img {
     font-size: 1em;
   }
 }
+
+.bienvenida, .galeria, .mensaje, .regalo {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: aparecer 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes aparecer {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.galeria img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+body {
+  cursor: url('cursor-varita.png'), auto;
+}
+
+.cuenta {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  margin: 20px auto;
+  max-width: 600px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#cuenta-regresiva {
+  font-size: 1.8em;
+  color: #8e24aa;
+  animation: parpadeo 1s infinite alternate;
+}
+
+@keyframes parpadeo {
+  from { opacity: 1; }
+  to { opacity: 0.7; }
+}
+
+.galeria img {
+  border: 4px solid transparent;
+  background: linear-gradient(45deg, #f8bbd0, #ba68c8);
+  background-clip: padding-box;
+  animation: marcoBrillante 3s infinite alternate;
+}
+
+@keyframes marcoBrillante {
+  0% { box-shadow: 0 0 10px #f8bbd0; }
+  100% { box-shadow: 0 0 20px #ba68c8; }
+}
