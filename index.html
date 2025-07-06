@@ -10,21 +10,25 @@
 <body>
     <!-- 🎈 Fondo de linternas flotantes -->
     <div id="linternas-container"></div>
-    <!-- 🎶 Música de fondo -->
-    <!-- Botón 1: Canción principal -->
-<button class="boton-musica" onclick="reproducirCancion('musica1')">🎵 Canción 1</button>
-<audio id="musica1" loop>
-    <source src="musicas.mp3/musica.mp3" type="audio/mpeg">
-</audio>
-<!-- Botón 2: Canción alternativa -->
-<button class="boton-musica" onclick="reproducirCancion('musica2')">🎶 Canción 2</button>
-<audio id="musica2" loop>
-    <source src="musicas.mp3/rapunzel.mp3" type="audio/mpeg">
-</audio>
+    <section class="cuenta">
+    <h2 id="cuenta-regresiva">⏳ Cargando cuenta regresiva...</h2>
+</section>
     <header>
     <h1>👑 Feliz Cumpleaños, Princesa ALEJANDRA IXAMAR TOCOCARI CABRERA</h1>
     <p>La más brillante, valiente y hermosa de nuestro reino</p>
     </header>
+    <!-- 🎶 Música de fondo -->
+    <!-- Botón 1: Canción principal -->
+<button class="boton-musica" onclick="reproducirCancion('musica1')">🎵 Mi Musica Favorita</button>
+<audio id="musica1" loop>
+    <source src="musicas.mp3/musica.mp3" type="audio/mpeg">
+</audio>
+<!-- Botón 2: Canción alternativa -->
+<button class="boton-musica" onclick="reproducirCancion('musica2')">🎶 Mi Segunda Musica Favorita</button>
+<audio id="musica2" loop>
+    <source src="musicas.mp3/rapunzel.mp3" type="audio/mpeg">
+</audio>
+    
     <section class="bienvenida">
     <h2>🌟 Hoy celebramos tu día mágico</h2>
     <p>Querida Alejandra, eres la luz de nuestra torre encantada. ¡Feliz cumpleaños!</p>
@@ -50,10 +54,45 @@
     </section>
     <section class="mensaje">
     <h2>💌 Un mensaje de parte de tu hermana DAYNNET</h2>
-    <p>Querida hermanita, cada día contigo es un cuento maravilloso. Gracias por ser tan especial. ¡Te quiero muchísimo! 💖</p>
+    <p>Querida hermanita, cada día contigo es un cuento maravilloso. Gracias por ser tan especial. ¡Te quiero muchísimo! 
+        🎈 ¡Feliz cumpleaños, Alejandra! 🎈
+Hay una hermana en mi vida...
+Una que a veces me hace enojar,
+una con la que a veces discutimos por tonterías,
+pero también una con la que me río,
+con la que comparto secretos,
+y con la que tengo los recuerdos más lindos de mi infancia.
+Alejandra, mi hermanita,
+aunque a veces peleamos,
+aunque a veces no estemos de acuerdo,
+quiero que sepas algo muy claro:
+Te quiero con todo mi corazón.
+Eres parte de mí,
+eres mi risa, mis juegos, mis días bonitos.
+Y aunque no siempre te lo diga,
+mi amor por ti es infinito.
+Hoy cumples un año más,
+y yo no podría estar más feliz de tenerte como hermana.
+Porque tú eres única,
+alegre, loca, dulce y fuerte.
+Mi amor, siempre te voy a querer y amar.
+¡Feliz cumpleaños, pequeña gran Alejandra! 🎂💖💖</p>
     </section>
+    <section class="muro">
+    <h2>💌 Deja tu mensaje para Alejandra</h2>
+    <textarea id="mensaje" placeholder="Escribe tu mensaje..."></textarea>
+    <button onclick="guardarMensaje()">Enviar</button>
+    <div id="mensajes-guardados"></div>
+</section>
+<section class="trivia">
+    <h2>🧠 ¿Cuánto sabes sobre Alejandra?</h2>
+    <div id="pregunta"></div>
+    <div id="opciones"></div>
+    <p id="comentario"></p>
+    <button onclick="siguientePregunta()">Siguiente</button>
+</section>
     <footer>
-    <p>Con amor, Alex, ojo tu hermana se colo jejeje bromita, pero espero te guste cuando aprenda un poco mas te lo cambiare o si gustas 
+    <p>Con amor, Alex, ojo tu hermana se colo jejeje bromita , pero espero te guste cuando aprenda un poco mas te lo cambiare o si gustas 
         aumentar con confianza me lo dices lo haremos a lo que mas te guste esta es tu propia pagina web si te molestan les dices por
         lo menos yo tengo mi propia pagina web 😝 y ustedes que tienen nacos 😝 🌸</p>
     </footer>
@@ -84,7 +123,101 @@
   // Reproducir la seleccionada
     const cancion = document.getElementById(id);
     cancion.play();
+    }
+  // 🎯 Establece la hora exacta del cumpleaños
+  const fechaCumple = new Date(2025, 6, 6, 0, 0, 0); // Ajusta la fecha y hora exacta
+    const cuenta = document.getElementById("cuenta-regresiva");
+    function actualizarCuentaRegresiva() {
+    const ahora = new Date();
+    const diferencia = fechaCumple - ahora;
+    if (diferencia <= 0) {
+        cuenta.textContent = "🎉 ¡Ya es el cumpleaños de Alejandra! 🎂";
+      // 🎊 Opcional: lanzar confeti cuando llegue el momento
+        if (typeof confetti === "function") {
+        confetti({
+            particleCount: 200,
+            spread: 100,
+            origin: { y: 0.6 },
+            colors: ['#f8bbd0', '#ba68c8', '#f06292']
+        });
+        }
+        return;
+    }
+    const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+    const segundos = Math.floor((diferencia / 1000) % 60);
+    cuenta.textContent = `⏳ Faltan ${horas}h ${minutos}m ${segundos}s para tu cumpleaños 🎂`;
+    }
+    setInterval(actualizarCuentaRegresiva, 1000);
+    actualizarCuentaRegresiva(); // Llamada inicial
+    function guardarMensaje() {
+    const texto = document.getElementById("mensaje").value;
+    if (texto.trim()) {
+    const div = document.createElement("div");
+    div.textContent = texto;
+    document.getElementById("mensajes-guardados").appendChild(div);
+    document.getElementById("mensaje").value = "";
+    }
 }
-    </script>
+const preguntas = [
+    {
+    texto: "¿Cuál es el color favorito de Alejandra?",
+    opciones: ["💜 Morado", "💙 Azul", "💖 Rosa"],
+    correcta: 0
+    },
+    {
+    texto: "¿Qué princesa le gusta más?",
+    opciones: ["👸 Rapunzel", "❄️ Elsa", "🧜‍♀️ Ariel"],
+    correcta: 0
+    },
+    {
+    texto: "¿Qué animal le gustaría tener como mascota?",
+    opciones: ["🐶 Perrito", "🦄 Unicornio", "🐱 Gatito"],
+    correcta: 0
+    }
+];
+let indice = 0;
+let puntaje = 0;
+function mostrarPregunta() {
+    const p = preguntas[indice];
+    document.getElementById("pregunta").textContent = p.texto;
+    const opcionesDiv = document.getElementById("opciones");
+    opcionesDiv.innerHTML = "";
+    p.opciones.forEach((opcion, i) => {
+    const btn = document.createElement("button");
+    btn.textContent = opcion;
+    btn.onclick = () => verificarRespuesta(i);
+    opcionesDiv.appendChild(btn);
+    });
+    document.getElementById("comentario").textContent = "";
+}
+function verificarRespuesta(seleccionada) {
+    const correcta = preguntas[indice].correcta;
+    const comentario = document.getElementById("comentario");
+    if (seleccionada === correcta) {
+    comentario.textContent = "✅ ¡Correcto!";
+    puntaje++;
+    } else {
+    comentario.textContent = "❌ Ups, esa no era.";
+    }
+  // Desactivar botones
+    const botones = document.querySelectorAll("#opciones button");
+    botones.forEach(btn => btn.disabled = true);
+}
+function siguientePregunta() {
+    indice++;
+    if (indice < preguntas.length) {
+    mostrarPregunta();
+    } else {
+    document.querySelector(".trivia").innerHTML = `
+        <h2>🎉 ¡Trivia completada!</h2>
+        <p>Tu puntaje final es: ${puntaje} de ${preguntas.length}</p>
+        <p>${puntaje === preguntas.length ? "¡Eres un experto en Alejandra! 👑" : "¡Buen intento! 😊"}</p>
+    `;
+    } 
+}
+
+mostrarPregunta();
+</script>
 </body>
 </html>
